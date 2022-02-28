@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<head>
+    <script type="text/javascript">
+        // archivos URL de pyodide
+        window.languagePluginUrl = 'https://pyodide-cdn2.iodide.io/v0.15.0/full/';
+    </script>
+    <!--Se requiere el script de pyiodide  -->
+    <script src="https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js"></script>
+</head>
+
+<body>
+    
+    <textarea id='code' rows='3'></textarea>
+
+    <button id='run' onclick='evaluatePython()'>Correr codigo</button>
+    <p></p><p></p><p></p>
+
+    <textarea id='output' style='width: 100%;' rows='10' disabled></textarea>
+
+    <script>
+        const output = document.getElementById("output")
+        const code = document.getElementById("code")
+
+        function addToOutput(s) {
+            output.value += `>>>${code.value}\n${s}\n`
+            output.scrollTop = output.scrollHeight
+            code.value=''
+        }
+
+        output.value = 'Initializing...\n'
+        // iniciar el environment y se puede tardar un poco en correr 
+        languagePluginLoader.then(() => { output.value += 'Ready!\n' })
+
+        function evaluatePython() {
+            pyodide.runPythonAsync(code.value)
+                .then(output => addToOutput(output))
+                .catch((err) => { addToOutput(err) })
+        }
+    </script>
+</body>
+
+</html>

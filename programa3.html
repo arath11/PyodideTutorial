@@ -3,10 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
+    <!--Se requiere el script de pyiodide  -->
   <script src="https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js"></script>
 <script>
-  
+
+//codigo de python  
 python_code = `
 import numpy as np
 np.ones((3,3))
@@ -26,10 +27,9 @@ for i in range(16):
     semilla=resultado
 `
 
-
-   // init environment
+   // iniciar el environment y se puede tardar un poco en correr 
    languagePluginLoader
-    // then run Python code
+    // despues se corre el codiog en python 
     .then(() =>  
     pyodide.runPythonAsync(python_code)
   .then(output => console.log(output))

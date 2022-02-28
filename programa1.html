@@ -1,18 +1,21 @@
-
+3324
+6698
+10
 
 <!DOCTYPE html>
 <html>
 <head>
-  
+  <!--Se requiere el script de pyiodide  -->
   <script src="https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js"></script>
 <script>
-   // init environment
+   // iniciar el environment y se puede tardar un poco en correr 
   languagePluginLoader
-    // then run Python code
-    .then(() => console.log(pyodide.runPython(`import sys; sys.version`)));
+    // despues se corre el codiog en python 
+    .then(() => console.log(pyodide.runPython(`import sys; sys.version;print("prueba")`)));
 
 </script>
 </head>
 <body>
 </body>
 </html>
+
