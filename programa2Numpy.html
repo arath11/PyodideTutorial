@@ -1,0 +1,25 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <script src="https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js"></script>
+<script>
+  
+   // init environment
+   languagePluginLoader
+    // then run Python code
+    .then(() =>  
+  pyodide.loadPackage('numpy').then(() => {
+  // numpy is now available
+  pyodide.runPython('import numpy as np')
+  console.log(pyodide.runPython('np.ones((3, 3))'))
+}))
+  
+
+</script>
+</head>
+<body>
+</body>
+</html>
